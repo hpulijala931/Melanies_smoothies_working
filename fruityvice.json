@@ -1,0 +1,132 @@
+[
+    {
+        "name": "Apple",
+        "id": 1,
+        "family": "Rosaceae",
+        "genus": "Malus",
+        "nutritions": {
+            "calories": 52,
+            "fat": 0.2,
+            "sugar": 10.4,
+            "carbohydrates": 13.8,
+            "protein": 0.3
+        }
+    },
+    {
+        "name": "Banana",
+        "id": 2,
+        "family": "Musaceae",
+        "genus": "Musa",
+        "nutritions": {
+            "calories": 96,
+            "fat": 0.3,
+            "sugar": 12.2,
+            "carbohydrates": 22.8,
+            "protein": 1.3
+        }
+    },
+    {
+        "name": "Blueberry",
+        "id": 3,
+        "family": "Ericaceae",
+        "genus": "Vaccinium",
+        "nutritions": {
+            "calories": 57,
+            "fat": 0.3,
+            "sugar": 9.7,
+            "carbohydrates": 14.5,
+            "protein": 0.7
+        }
+    },
+    {
+        "name": "Strawberry",
+        "id": 4,
+        "family": "Rosaceae",
+        "genus": "Fragaria",
+        "nutritions": {
+            "calories": 32,
+            "fat": 0.3,
+            "sugar": 4.9,
+            "carbohydrates": 7.7,
+            "protein": 0.7
+        }
+    },
+    {
+        "name": "Raspberry",
+        "id": 5,
+        "family": "Rosaceae",
+        "genus": "Rubus",
+        "nutritions": {
+            "calories": 52,
+            "fat": 0.7,
+            "sugar": 4.4,
+            "carbohydrates": 11.9,
+            "protein": 1.5
+        }
+    },
+    {
+        "name": "Jackfruit",
+        "id": 6,
+        "family": "Moraceae",
+        "genus": "Artocarpus",
+        "nutritions": {
+            "calories": 95,
+            "fat": 0.3,
+            "sugar": 19.1,
+            "carbohydrates": 23.2,
+            "protein": 1.7
+        }
+    },
+    {
+        "name": "Mango",
+        "id": 7,
+        "family": "Anacardiaceae",
+        "genus": "Mangifera",
+        "nutritions": {
+            "calories": 60,
+            "fat": 0.4,
+            "sugar": 13.7,
+            "carbohydrates": 15,
+            "protein": 0.8
+        }
+    },
+    {
+        "name": "Orange",
+        "id": 8,
+        "family": "Rutaceae",
+        "genus": "Citrus",
+        "nutritions": {
+            "calories": 47,
+            "fat": 0.1,
+            "sugar": 9.4,
+            "carbohydrates": 11.8,
+            "protein": 0.9
+        }
+    },
+    {
+        "name": "Pineapple",
+        "id": 9,
+        "family": "Bromeliaceae",
+        "genus": "Ananas",
+        "nutritions": {
+            "calories": 50,
+            "fat": 0.1,
+            "sugar": 9.9,
+            "carbohydrates": 13.1,
+            "protein": 0.5
+        }
+    },
+    {
+        "name": "Grapes",
+        "id": 10,
+        "family": "Vitaceae",
+        "genus": "Vitis",
+        "nutritions": {
+            "calories": 69,
+            "fat": 0.2,
+            "sugar": 16.3,
+            "carbohydrates": 18.1,
+            "protein": 0.6
+        }
+    }
+]
