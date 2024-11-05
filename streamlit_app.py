@@ -2,7 +2,6 @@
 import streamlit as st
 import json
 import pandas as pd
-import requests  # To make API calls (if needed)
 from snowflake.snowpark.functions import col
 
 # Set up the Streamlit UI
@@ -27,6 +26,10 @@ session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col("FRUIT_NAME"), col("SEARCH_ON")).to_pandas()
 pd_df = my_dataframe  # Use pd_df as a version of my_dataframe
 
+# Load the local fruityvice.json file
+with open("fruityvice.json") as f:
+    fruityvice_data = json.load(f)
+
 # Ingredient selection with a maximum of 5 options
 ingredients_list = st.multiselect('Choose Up to 5 Ingredients:', pd_df['FRUIT_NAME'], max_selections=5)
 
@@ -43,16 +46,16 @@ if ingredients_list:
         # Display the fruit and corresponding search value
         st.subheader(f"{fruit_chosen} Nutrition Information")
         
-        # Example API call to Fruityvice (if available)
-        # fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{search_on}")
-        # For demonstration, replace with sample JSON if API is down
-        try:
-            fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{search_on}")
-            fv_df = pd.DataFrame(fruityvice_response.json())  # Convert response to DataFrame
+        # Look up the search_on value in the loaded JSON data
+        fruit_info = next((item for item in fruityvice_data if item["name"].lower() == search_on.lower()), None)
+        
+        # Display the data if found, otherwise show an error
+        if fruit_info:
+            fv_df = pd.DataFrame([fruit_info])  # Convert the dictionary to a DataFrame
             st.dataframe(data=fv_df, use_container_width=True)  # Display nutrition info
-        except:
-            st.error("Unable to fetch data from Fruityvice. Please try again later.")
-    
+        else:
+            st.error(f"No nutrition information found for {fruit_chosen}.")
+
     # Prepare the SQL insert statement for storing the order in the database
     my_insert_stmt = f"""
     INSERT INTO smoothies.public.orders (ingredients, name_on_order)
