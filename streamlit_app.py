@@ -1,5 +1,6 @@
 # Import necessary packages
 import streamlit as st
+import json
 from snowflake.snowpark.functions import col
 
 # Set up the Streamlit UI
