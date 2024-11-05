@@ -1,7 +1,8 @@
 # Import necessary packages
 import streamlit as st
 import json
-import pandas as pd  # Import pandas
+import pandas as pd
+import requests  # To make API calls (if needed)
 from snowflake.snowpark.functions import col
 
 # Set up the Streamlit UI
@@ -24,8 +25,6 @@ session = cnx.session()
 
 # Retrieve fruit options from Snowflake and convert to Pandas DataFrame
 my_dataframe = session.table("smoothies.public.fruit_options").select(col("FRUIT_NAME"), col("SEARCH_ON")).to_pandas()
-
-# Rename DataFrame for clarity
 pd_df = my_dataframe  # Use pd_df as a version of my_dataframe
 
 # Ingredient selection with a maximum of 5 options
@@ -36,15 +35,25 @@ if ingredients_list:
     ingredients_string = ', '.join(ingredients_list)
     st.write("Selected Ingredients:", ingredients_string)
 
-    # Retrieve and display the "SEARCH_ON" values for each selected ingredient
-    search_values = []
+    # Loop through each selected ingredient to fetch the "SEARCH_ON" value and display nutrition info
     for fruit_chosen in ingredients_list:
         # Get the "SEARCH_ON" value for the selected fruit
         search_on = pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
-        search_values.append(search_on)
-        st.write('The search value for', fruit_chosen, 'is', search_on)
-
-    # Prepare the SQL insert statement with the chosen ingredients
+        
+        # Display the fruit and corresponding search value
+        st.subheader(f"{fruit_chosen} Nutrition Information")
+        
+        # Example API call to Fruityvice (if available)
+        # fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{search_on}")
+        # For demonstration, replace with sample JSON if API is down
+        try:
+            fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{search_on}")
+            fv_df = pd.DataFrame(fruityvice_response.json())  # Convert response to DataFrame
+            st.dataframe(data=fv_df, use_container_width=True)  # Display nutrition info
+        except:
+            st.error("Unable to fetch data from Fruityvice. Please try again later.")
+    
+    # Prepare the SQL insert statement for storing the order in the database
     my_insert_stmt = f"""
     INSERT INTO smoothies.public.orders (ingredients, name_on_order)
     VALUES ('{ingredients_string}', '{name_on_order}')
