@@ -1,34 +1,23 @@
 [
     {
-        "name": "Apple",
+        "name": "Apples",
         "id": 1,
         "family": "Rosaceae",
+        "order": "Rosales",
         "genus": "Malus",
         "nutritions": {
             "calories": 52,
             "fat": 0.2,
-            "sugar": 10.4,
-            "carbohydrates": 13.8,
+            "sugar": 10.3,
+            "carbohydrates": 14,
             "protein": 0.3
         }
     },
     {
-        "name": "Banana",
+        "name": "Blueberries",
         "id": 2,
-        "family": "Musaceae",
-        "genus": "Musa",
-        "nutritions": {
-            "calories": 96,
-            "fat": 0.3,
-            "sugar": 12.2,
-            "carbohydrates": 22.8,
-            "protein": 1.3
-        }
-    },
-    {
-        "name": "Blueberry",
-        "id": 3,
         "family": "Ericaceae",
+        "order": "Ericales",
         "genus": "Vaccinium",
         "nutritions": {
             "calories": 57,
@@ -39,48 +28,136 @@
         }
     },
     {
-        "name": "Strawberry",
-        "id": 4,
-        "family": "Rosaceae",
-        "genus": "Fragaria",
+        "name": "Cantaloupe",
+        "id": 3,
+        "family": "Cucurbitaceae",
+        "order": "Cucurbitales",
+        "genus": "Cucumis",
         "nutritions": {
-            "calories": 32,
-            "fat": 0.3,
-            "sugar": 4.9,
-            "carbohydrates": 7.7,
+            "calories": 34,
+            "fat": 0.2,
+            "sugar": 8,
+            "carbohydrates": 8.2,
+            "protein": 0.8
+        }
+    },
+    {
+        "name": "Dragon Fruit",
+        "id": 4,
+        "family": "Cactaceae",
+        "order": "Caryophyllales",
+        "genus": "Hylocereus",
+        "nutritions": {
+            "calories": 60,
+            "fat": 0.1,
+            "sugar": 7.7,
+            "carbohydrates": 13,
+            "protein": 1.2
+        }
+    },
+    {
+        "name": "Elderberries",
+        "id": 5,
+        "family": "Adoxaceae",
+        "order": "Dipsacales",
+        "genus": "Sambucus",
+        "nutritions": {
+            "calories": 73,
+            "fat": 0.5,
+            "sugar": 6,
+            "carbohydrates": 18.4,
             "protein": 0.7
         }
     },
     {
-        "name": "Raspberry",
-        "id": 5,
-        "family": "Rosaceae",
-        "genus": "Rubus",
+        "name": "Figs",
+        "id": 6,
+        "family": "Moraceae",
+        "order": "Rosales",
+        "genus": "Ficus",
         "nutritions": {
-            "calories": 52,
-            "fat": 0.7,
-            "sugar": 4.4,
-            "carbohydrates": 11.9,
-            "protein": 1.5
+            "calories": 74,
+            "fat": 0.3,
+            "sugar": 16.3,
+            "carbohydrates": 19,
+            "protein": 0.8
+        }
+    },
+    {
+        "name": "Guava",
+        "id": 7,
+        "family": "Myrtaceae",
+        "order": "Myrtales",
+        "genus": "Psidium",
+        "nutritions": {
+            "calories": 68,
+            "fat": 1,
+            "sugar": 8.9,
+            "carbohydrates": 14.3,
+            "protein": 2.6
+        }
+    },
+    {
+        "name": "Honeydew",
+        "id": 8,
+        "family": "Cucurbitaceae",
+        "order": "Cucurbitales",
+        "genus": "Cucumis",
+        "nutritions": {
+            "calories": 36,
+            "fat": 0.1,
+            "sugar": 8.1,
+            "carbohydrates": 9.1,
+            "protein": 0.5
         }
     },
     {
         "name": "Jackfruit",
-        "id": 6,
+        "id": 9,
         "family": "Moraceae",
+        "order": "Rosales",
         "genus": "Artocarpus",
         "nutritions": {
             "calories": 95,
-            "fat": 0.3,
+            "fat": 0.6,
             "sugar": 19.1,
-            "carbohydrates": 23.2,
+            "carbohydrates": 23,
             "protein": 1.7
         }
     },
     {
+        "name": "Kiwi",
+        "id": 10,
+        "family": "Actinidiaceae",
+        "order": "Ericales",
+        "genus": "Actinidia",
+        "nutritions": {
+            "calories": 61,
+            "fat": 0.5,
+            "sugar": 8.9,
+            "carbohydrates": 14.7,
+            "protein": 1.1
+        }
+    },
+    {
+        "name": "Lime",
+        "id": 11,
+        "family": "Rutaceae",
+        "order": "Sapindales",
+        "genus": "Citrus",
+        "nutritions": {
+            "calories": 30,
+            "fat": 0.2,
+            "sugar": 1.7,
+            "carbohydrates": 10.5,
+            "protein": 0.7
+        }
+    },
+    {
         "name": "Mango",
-        "id": 7,
+        "id": 12,
         "family": "Anacardiaceae",
+        "order": "Sapindales",
         "genus": "Mangifera",
         "nutritions": {
             "calories": 60,
@@ -91,42 +168,185 @@
         }
     },
     {
+        "name": "Nectarine",
+        "id": 13,
+        "family": "Rosaceae",
+        "order": "Rosales",
+        "genus": "Prunus",
+        "nutritions": {
+            "calories": 44,
+            "fat": 0.3,
+            "sugar": 8.4,
+            "carbohydrates": 10.6,
+            "protein": 1.1
+        }
+    },
+    {
         "name": "Orange",
-        "id": 8,
+        "id": 14,
         "family": "Rutaceae",
+        "order": "Sapindales",
         "genus": "Citrus",
         "nutritions": {
             "calories": 47,
             "fat": 0.1,
             "sugar": 9.4,
-            "carbohydrates": 11.8,
+            "carbohydrates": 11.7,
             "protein": 0.9
         }
     },
     {
-        "name": "Pineapple",
-        "id": 9,
-        "family": "Bromeliaceae",
-        "genus": "Ananas",
+        "name": "Papaya",
+        "id": 15,
+        "family": "Caricaceae",
+        "order": "Brassicales",
+        "genus": "Carica",
         "nutritions": {
-            "calories": 50,
-            "fat": 0.1,
-            "sugar": 9.9,
-            "carbohydrates": 13.1,
+            "calories": 43,
+            "fat": 0.3,
+            "sugar": 5.9,
+            "carbohydrates": 10.8,
             "protein": 0.5
         }
     },
     {
-        "name": "Grapes",
-        "id": 10,
-        "family": "Vitaceae",
-        "genus": "Vitis",
+        "name": "Quince",
+        "id": 16,
+        "family": "Rosaceae",
+        "order": "Rosales",
+        "genus": "Cydonia",
         "nutritions": {
-            "calories": 69,
+            "calories": 57,
+            "fat": 0.1,
+            "sugar": 6.3,
+            "carbohydrates": 15.3,
+            "protein": 0.4
+        }
+    },
+    {
+        "name": "Raspberries",
+        "id": 17,
+        "family": "Rosaceae",
+        "order": "Rosales",
+        "genus": "Rubus",
+        "nutritions": {
+            "calories": 52,
+            "fat": 0.6,
+            "sugar": 4.4,
+            "carbohydrates": 11.9,
+            "protein": 1.5
+        }
+    },
+    {
+        "name": "Strawberries",
+        "id": 18,
+        "family": "Rosaceae",
+        "order": "Rosales",
+        "genus": "Fragaria",
+        "nutritions": {
+            "calories": 32,
+            "fat": 0.3,
+            "sugar": 4.9,
+            "carbohydrates": 7.7,
+            "protein": 0.7
+        }
+    },
+    {
+        "name": "Tangerine",
+        "id": 19,
+        "family": "Rutaceae",
+        "order": "Sapindales",
+        "genus": "Citrus",
+        "nutritions": {
+            "calories": 53,
+            "fat": 0.3,
+            "sugar": 10.6,
+            "carbohydrates": 13.3,
+            "protein": 0.8
+        }
+    },
+    {
+        "name": "Ugli Fruit",
+        "id": 20,
+        "family": "Rutaceae",
+        "order": "Sapindales",
+        "genus": "Citrus",
+        "nutritions": {
+            "calories": 45,
             "fat": 0.2,
-            "sugar": 16.3,
-            "carbohydrates": 18.1,
+            "sugar": 8.9,
+            "carbohydrates": 11.6,
+            "protein": 1
+        }
+    },
+    {
+        "name": "Vanilla Fruit",
+        "id": 21,
+        "family": "Orchidaceae",
+        "order": "Asparagales",
+        "genus": "Vanilla",
+        "nutritions": {
+            "calories": 288,
+            "fat": 0.1,
+            "sugar": 12.7,
+            "carbohydrates": 13.3,
+            "protein": 0.1
+        }
+    },
+    {
+        "name": "Watermelon",
+        "id": 22,
+        "family": "Cucurbitaceae",
+        "order": "Cucurbitales",
+        "genus": "Citrullus",
+        "nutritions": {
+            "calories": 30,
+            "fat": 0.2,
+            "sugar": 6.2,
+            "carbohydrates": 7.6,
             "protein": 0.6
+        }
+    },
+    {
+        "name": "Ximenia",
+        "id": 23,
+        "family": "Olacaceae",
+        "order": "Santalales",
+        "genus": "Ximenia",
+        "nutritions": {
+            "calories": 98,
+            "fat": 1.3,
+            "sugar": 10.1,
+            "carbohydrates": 20.5,
+            "protein": 1.2
+        }
+    },
+    {
+        "name": "Yerba Mate",
+        "id": 24,
+        "family": "Aquifoliaceae",
+        "order": "Aquifoliales",
+        "genus": "Ilex",
+        "nutritions": {
+            "calories": 0,
+            "fat": 0,
+            "sugar": 0,
+            "carbohydrates": 0,
+            "protein": 0
+        }
+    },
+    {
+        "name": "Ziziphus Jujube",
+        "id": 25,
+        "family": "Rhamnaceae",
+        "order": "Rosales",
+        "genus": "Ziziphus",
+        "nutritions": {
+            "calories": 79,
+            "fat": 0.2,
+            "sugar": 20,
+            "carbohydrates": 20,
+            "protein": 1.2
         }
     }
 ]
