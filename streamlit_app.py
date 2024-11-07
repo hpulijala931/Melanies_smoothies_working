@@ -1,70 +1,53 @@
-# Import necessary packages
+# Import python packages
 import streamlit as st
-import json
-import pandas as pd
 from snowflake.snowpark.functions import col
+import requests
 
-# Set up the Streamlit UI
-st.title("Customise Your Smoothie 🥤")
+# Write directly to the app
+st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
 st.write(
-    """Replace this example with your own code!
-    **And if you're new to Streamlit,** check
-    out our easy-to-follow guides at
-    [docs.streamlit.io](https://docs.streamlit.io).
+    """Choose the fruits you want in your custom Smoothie!
     """
 )
+name_on_order = st.text_input('Name on Smothie: ')
+st.write('The name on your Smoothie will be: ', name_on_order)
 
-# Input fields for smoothie customization
-name_on_order = st.text_input("Name on Smoothie:")
-st.write("The name on your smoothie will be:", name_on_order)
-
-# Establish connection to Snowflake using st.connection
-cnx = st.connection("snowflake")  # Ensure 'snowflake' matches the connection name in your Streamlit app settings
+cnx = st.connection("snowflake")
 session = cnx.session()
 
-# Retrieve fruit options from Snowflake and convert to Pandas DataFrame
-my_dataframe = session.table("smoothies.public.fruit_options").select(col("FRUIT_NAME"), col("SEARCH_ON")).to_pandas()
-pd_df = my_dataframe  # Use pd_df as a version of my_dataframe
+my_dataframe = session.table(
+    "smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON'))
+pd_df = my_dataframe.to_pandas()
 
-# Load the local fruityvice.json file
-with open("fruityvice.json") as f:
-    fruityvice_data = json.load(f)
 
-# Ingredient selection with a maximum of 5 options
-ingredients_list = st.multiselect('Choose Up to 5 Ingredients:', pd_df['FRUIT_NAME'], max_selections=5)
+ingredients_list = st.multiselect(
+    "Choose up to 5 ingredients",
+    my_dataframe,
+    max_selections=5
+)
 
-# If ingredients are selected, prepare and display the order
 if ingredients_list:
-    ingredients_string = ', '.join(ingredients_list)
-    st.write("Selected Ingredients:", ingredients_string)
+    
+    ingredients_string = ''
 
-    # Loop through each selected ingredient to fetch the "SEARCH_ON" value and display nutrition info
     for fruit_chosen in ingredients_list:
-        # Get the "SEARCH_ON" value for the selected fruit
-        search_on = pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
-        
-        # Display the fruit and corresponding search value
-        st.subheader(f"{fruit_chosen} Nutrition Information")
-        
-        # Look up the search_on value in the loaded JSON data
-        fruit_info = next((item for item in fruityvice_data if item["name"].lower() == search_on.lower()), None)
-        
-        # Display the data if found, otherwise show an error
-        if fruit_info:
-            fv_df = pd.DataFrame([fruit_info])  # Convert the dictionary to a DataFrame
-            st.dataframe(data=fv_df, use_container_width=True)  # Display nutrition info
-        else:
-            st.error(f"No nutrition information found for {fruit_chosen}.")
+        ingredients_string += fruit_chosen + ' '
 
-    # Prepare the SQL insert statement for storing the order in the database
-    my_insert_stmt = f"""
-    INSERT INTO smoothies.public.orders (ingredients, name_on_order)
-    VALUES ('{ingredients_string}', '{name_on_order}')
-    """
-    st.write("SQL Insert Statement:", my_insert_stmt)
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
 
-    # Button to submit the order
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+search_on)
+        fv_dt = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
+
+    st.write(ingredients_string)
+
+    my_insert_stmt = """ insert into smoothies.public.orders
+    (ingredients, name_on_order)
+    values ('""" + ingredients_string + """', '""" + name_on_order +"""')"""
+
     time_to_insert = st.button('Submit Order')
+
     if time_to_insert:
+        
         session.sql(my_insert_stmt).collect()
-        st.success('Your Smoothie is ordered!', icon="✅")
+        st.success('Your Smoothie is ordered, '+name_on_order+'!', icon="✅")
